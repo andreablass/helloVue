@@ -1,6 +1,15 @@
 <script setup>
+import Container from '@/components/container/Index.vue'
+import {computed, ref} from "vue";
 const props = defineProps({});
-const currentYear = new Date().getFullYear();
+
+let cambia = ref('something')
+const fija = ref('something')
+const date = ref(new Date)
+
+cambia = 'hey hey hey' //Se asigna con el valor string
+fija.value = 'hey hey hey' //Este es el valor del objeto de la referencia a  la variable llamada fija, pero el valor de fija no ha cambiado
+
 </script>
 
 <template>
@@ -10,7 +19,7 @@ const currentYear = new Date().getFullYear();
         class="container mx-auto flex flex-col md:flex-row justify-between items-center text-center md:text-left"
       >
         <div class="mb-4 md:mb-0">
-          <p>&copy; {{ currentYear }} Andrea Blass. All rights reserved.</p>
+          <p>&copy; {{ date.getFullYear() }} Andrea Blass. All rights reserved.</p>
         </div>
         <div class="flex flex-wrap justify-center md:justify-end space-x-4">
           <a href="/about" class="hover:text-gray-400">About</a>
