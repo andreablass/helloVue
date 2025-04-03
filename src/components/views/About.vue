@@ -1,11 +1,13 @@
 <script setup>
 import { defineProps, defineEmits, ref } from 'vue';
 
+// Recibiendo las props en el componente hijo
 const props = defineProps({
   name: String,
   description: String
 });
 
+// Definimos `emit` para enviar eventos al padre
 const emit = defineEmits(['updateName']);
 const localName = ref(props.name);
 const skills = ref(['Vue', 'JavaScript', 'CSS', 'Tailwind']); // Lista con v-for

@@ -19,7 +19,7 @@ const updateName = (newName) => {
   <Header v-if="showHeader" :title="name" />
 
   <main class="min-h-56">
-    <!-- Enviamos props y manejamos eventos -->
+    <!-- Enviamos props y manejamos eventos los datos son enviados desde el componente padre -->
     <About :name="name" :description="description" @updateName="updateName" />
     <div class="py-19">
       <button class="p-2 bg-pink-500 text-white rounded">Hello World</button>
