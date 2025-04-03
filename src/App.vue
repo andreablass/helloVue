@@ -4,10 +4,12 @@ import Footer from "@/components/navigation/Footer.vue";
 import { ref } from "vue";
 import About from "@/components/views/About.vue";
 import Container from "@/components/container/Index.vue";
+import { useCounter } from "@/composables/useCounter";
 
 const name = ref("Andrea");
 const description = ref("Web developer and community lead.");
 const showHeader = ref(true); // Para alternar visibilidad del header
+const { count, increment } = useCounter();
 
 const updateName = (newName) => {
   name.value = newName;
