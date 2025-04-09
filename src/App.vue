@@ -9,7 +9,7 @@ import { useCounter } from "@/composables/useCounter";
 const name = ref("Andrea");
 const description = ref("Web developer and community lead.");
 const showHeader = ref(true); // Para alternar visibilidad del header
-const { count, increment } = useCounter();
+const { count, increment, decrement } = useCounter(); //se declaran las variables dentro del composables
 
 const updateName = (newName) => {
   name.value = newName;
@@ -26,6 +26,12 @@ const updateName = (newName) => {
     <div class="py-19">
       <button class="p-2 bg-pink-500 text-white rounded">Hello World</button>
     </div>
+    <div>
+  <div>
+    <button @click="decrement">-</button>
+    <span>{{ count }}</span>
+    <button @click="increment">+</button>
+  </div>
   </main>
 
   <Footer>
