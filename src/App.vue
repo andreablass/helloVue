@@ -6,6 +6,8 @@ import About from "@/components/views/About.vue";
 import Container from "@/components/container/Index.vue";
 import { useCounter } from "@/composables/useCounter";
 
+const mensaje = ref('Hola');
+
 const name = ref("Andrea");
 const description = ref("Web developer and community lead.");
 const showHeader = ref(true); // Para alternar visibilidad del header
