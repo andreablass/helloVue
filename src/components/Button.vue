@@ -1,5 +1,10 @@
 <script setup>
 import { ref, watch } from "vue";
+import { onMounted } from 'vue';
+
+onMounted ( () => {
+  console.log('El componente fue montado');
+})
 
 const props = defineProps({});
 const loading = ref(false);
