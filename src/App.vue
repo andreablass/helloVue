@@ -4,42 +4,62 @@ import Footer from "@/components/navigation/Footer.vue";
 import About from "@/components/views/About.vue";
 import Container from "@/components/container/Index.vue";
 import { useCounter } from "@/composables/useCounter";
-import { ref, onMounted, onUpdated, onUnmounted } from 'vue';
-import { useTitle } from '@/composables/useTitle'
+import {
+  ref,
+  onMounted,
+  onBeforeUpdate,
+  onUpdated,
+  onBeforeUnmount,
+  onUnmounted,
+} from "vue";
+import { useTitle } from "@/composables/useTitle";
 
-const { title } = useTitle('Home');
+const { title } = useTitle("Home");
 
 // ✅ variables
-const mensaje = ref('Hola mundo');
+const mensaje = ref("Hola mundo");
 const logs = ref([]); // ¡Este tiene que estar definido una sola vez!
 
 const name = ref("Andrea");
 const description = ref("Web developer and community lead.");
 const showHeader = ref(true);
-const { count, increment, decrement } = useCounter();
 
-// ✅ funciones
-const updateName = (newName) => {
-  name.value = newName;
+// Estado reactivo
+const count = ref(0);
+const titulo = ref(null);
+
+// Función para aumentar el contador
+const incrementar = () => {
+  count.value++;
 };
 
-const updateMessage = () => {
-  mensaje.value += ' 👋';
-  logs.value.push('✏️ updateMessage: mensaje actualizado');
-};
-
-// ✅ ciclo de vida
+// Hook: se ejecuta después de montar el componente
 onMounted(() => {
-  console.log('✅ onMounted: El componente fue montado');
+  console.log("🟢 onMounted: El componente está en el DOM");
+  console.log("👉 Texto actual:", titulo.value.textContent);
 });
 
+// Hook: justo antes de que Vue actualice el DOM por un cambio reactivo
+onBeforeUpdate(() => {
+  console.log(
+    "🟡 onBeforeUpdate: El DOM todavía muestra:",
+    titulo.value.textContent
+  );
+});
+
+// Hook: después de que Vue actualiza el DOM
 onUpdated(() => {
-  console.log('🔄 onUpdated: El componente fue actualizado');
+  console.log("🔵 onUpdated: Ahora el DOM dice:", titulo.value.textContent);
 });
 
+// Hook: antes de desmontar el componente
+onBeforeUnmount(() => {
+  console.log("🟠 onBeforeUnmount: El componente está por eliminarse");
+});
 
+// Hook: después de desmontar el componente
 onUnmounted(() => {
-  console.log('❌ Componente destruido');
+  console.log("🔴 onUnmounted: El componente fue eliminado");
 });
 </script>
 
@@ -49,29 +69,15 @@ onUnmounted(() => {
   <main class="min-h-56">
     <About :name="name" :description="description" @updateName="updateName" />
 
-    <div class="py-19">
-      <button class="p-2 bg-pink-500 text-white rounded">Hello World</button>
-    </div>
-
     <div>
-      <button @click="decrement">-</button>
-      <span>{{ count }}</span>
-      <button @click="increment">+</button>
-    </div>
-
-    <!-- ✅ Zona de ciclo de vida -->
-    <div class="p-4 border rounded shadow-md">
-      <h2 class="text-lg font-bold mb-2">Ciclo de vida en acción 🚀</h2>
-      <p>{{ mensaje }}</p>
-      <button @click="updateMessage" class="mt-2 px-3 py-1 bg-blue-500 text-white rounded">
-        Actualizar mensaje
-      </button>
-
-      <ul class="mt-4 text-sm text-gray-700">
-        <li v-for="(log, index) in logs" :key="index">• {{ log }}</li>
-      </ul>
+      <h2 ref="titulo">Has hecho clic {{ count }} veces</h2>
+      <button @click="incrementar">Haz clic</button>
     </div>
   </main>
+
+  <div class="py-19">
+    <button class="p-2 bg-pink-500 text-white rounded">Hello World</button>
+  </div>
 
   <Footer>
     <p>Este es el footer</p>
