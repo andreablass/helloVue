@@ -13,8 +13,12 @@ import {
   onUnmounted,
 } from "vue";
 import { useTitle } from "@/composables/useTitle";
+import  {usePrueba} from "@/composables/usePrueba";
+
 
 const { title } = useTitle("Home");
+
+usePrueba();
 
 // ✅ variables
 const mensaje = ref("Hola mundo");
@@ -72,7 +76,7 @@ onUnmounted(() => {
     <div>
       <h2 ref="titulo">Has hecho clic {{ count }} veces</h2>
       <button @click="incrementar">Haz clic</button>
-    </div>
+    </div> 
   </main>
 
   <div class="py-19">
