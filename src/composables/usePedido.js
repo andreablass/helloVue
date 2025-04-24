@@ -1,11 +1,23 @@
-import { onMounted, onUnmount } from 'vue';
+import { ref, onMounted, onUpdated } from 'vue';
 
-export function usePedido(pedidoId) {
+export function usePedido() {
+  const pedido = ref();
+
   onMounted(() => {
-    console.log(`Pedido ${pedidoId} ha sido dado de alta.`);
+    console.log('Pedido montado');
+    pedido.value = ' Pedido inicial cargado';
   });
 
-  onBeforeUnmount(() => {
-    console.log(`Pedido ${pedidoId} ha sido dado de baja.`);
+  onUpdated(() => {
+    console.log('El componente fue actualizado');
   });
+
+  const actualizarPedido = () => {
+    pedido.value = 'Pedido actualizado';
+  };
+
+  return {
+    pedido,
+    actualizarPedido
+  };
 }

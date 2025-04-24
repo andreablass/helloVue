@@ -13,9 +13,14 @@ import {
   onUnmounted,
 } from "vue";
 import { useTitle } from "@/composables/useTitle";
-import  {usePrueba} from "@/composables/usePrueba";
+import { usePrueba } from "@/composables/usePrueba";
+import { usePedido } from "@/composables/usePedido";
+import { useColor } from "@/composables/useColor";
+import Modal from "@/components/Modal.vue";
 
-
+const mostrarModal = ref(false);
+const { pedido, actualizarPedido } = usePedido();
+const { color } = useColor();
 const { title } = useTitle("Home");
 
 usePrueba();
@@ -35,6 +40,10 @@ const titulo = ref(null);
 // Función para aumentar el contador
 const incrementar = () => {
   count.value++;
+};
+
+const cambiarColor = () => {
+  color.value = color.value === "black" ? "red" : "black";
 };
 
 // Hook: se ejecuta después de montar el componente
@@ -76,8 +85,40 @@ onUnmounted(() => {
     <div>
       <h2 ref="titulo">Has hecho clic {{ count }} veces</h2>
       <button @click="incrementar">Haz clic</button>
-    </div> 
+    </div>
   </main>
+
+  <div class="p-4">
+    <h1 class="text-xl font-bold">Mi Pedido</h1>
+    <p>{{ pedido }}</p>
+    <button
+      @click="actualizarPedido"
+      class="mt-2 px-4 py-2 bg-green-500 text-white rounded"
+    >
+      Cambiar pedido
+    </button>
+  </div>
+
+  <div>
+    <p :style="{ color }">Este texto cambia de color</p>
+    <button
+      @click="cambiarColor"
+      class="mt-2 px-4 py-2 bg-green-500 text-white rounded"
+    >
+      Cambiar color
+    </button>
+  </div>
+
+  <div class="p-8">
+    <button
+      @click="mostrarModal = true"
+      class="bg-blue-500 text-white px-4 py-2 rounded"
+    >
+      Abrir Modal
+    </button>
+
+    <Modal v-model="mostrarModal" />
+  </div>
 
   <div class="py-19">
     <button class="p-2 bg-pink-500 text-white rounded">Hello World</button>
