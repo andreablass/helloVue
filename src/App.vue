@@ -17,8 +17,10 @@ import { usePrueba } from "@/composables/usePrueba";
 import { usePedido } from "@/composables/usePedido";
 import { useColor } from "@/composables/useColor";
 import Modal from "@/components/Modal.vue";
+import Form from   "@/components/Form.vue";
 
 const mostrarModal = ref(false);
+const message = ref('');
 const { pedido, actualizarPedido } = usePedido();
 const { color } = useColor();
 const { title } = useTitle("Home");
@@ -116,8 +118,11 @@ onUnmounted(() => {
     >
       Abrir Modal
     </button>
-
     <Modal v-model="mostrarModal" />
+  </div>
+
+  <div>
+    message();
   </div>
 
   <div class="py-19">
