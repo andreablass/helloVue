@@ -16,20 +16,26 @@ import { useTitle } from "@/composables/useTitle";
 import { usePrueba } from "@/composables/usePrueba";
 import { usePedido } from "@/composables/usePedido";
 import { useColor } from "@/composables/useColor";
+import { useNombre } from "@/composables/useNombre";
 import Modal from "@/components/Modal.vue";
-import Form from   "@/components/Form.vue";
+import Form from "@/components/Form.vue";
+import Flor from "@/components/Flor.vue";
+import Sol from "@/components/Sol.vue";
 
 const mostrarModal = ref(false);
-const message = ref('');
+const message = ref("");
 const { pedido, actualizarPedido } = usePedido();
 const { color } = useColor();
 const { title } = useTitle("Home");
+const { nombre } = useNombre();
+const showFlor = ref(true);
+const mostrarSol = ref(true);
 
 usePrueba();
 
 // ✅ variables
 const mensaje = ref("Hola mundo");
-const logs = ref([]); // ¡Este tiene que estar definido una sola vez!
+const logs = ref([]); //
 
 const name = ref("Andrea");
 const description = ref("Web developer and community lead.");
@@ -47,35 +53,6 @@ const incrementar = () => {
 const cambiarColor = () => {
   color.value = color.value === "black" ? "red" : "black";
 };
-
-// Hook: se ejecuta después de montar el componente
-onMounted(() => {
-  console.log("🟢 onMounted: El componente está en el DOM");
-  console.log("👉 Texto actual:", titulo.value.textContent);
-});
-
-// Hook: justo antes de que Vue actualice el DOM por un cambio reactivo
-onBeforeUpdate(() => {
-  console.log(
-    "🟡 onBeforeUpdate: El DOM todavía muestra:",
-    titulo.value.textContent
-  );
-});
-
-// Hook: después de que Vue actualiza el DOM
-onUpdated(() => {
-  console.log("🔵 onUpdated: Ahora el DOM dice:", titulo.value.textContent);
-});
-
-// Hook: antes de desmontar el componente
-onBeforeUnmount(() => {
-  console.log("🟠 onBeforeUnmount: El componente está por eliminarse");
-});
-
-// Hook: después de desmontar el componente
-onUnmounted(() => {
-  console.log("🔴 onUnmounted: El componente fue eliminado");
-});
 </script>
 
 <template>
@@ -122,7 +99,36 @@ onUnmounted(() => {
   </div>
 
   <div>
-    message();
+    <h1>Componente padre Principal</h1>
+    <Form v-model="message" />
+    <p>Mensaje recibido en componente padre: {{ message }}</p>
+  </div>
+
+  <button
+    @click="showFlor = !showFlor"
+    class="p-2 bg-blue-500 text-white rounded"
+  >
+    {{ showFlor ? "Ocultar Flor" : "Mostrar Flor" }}
+  </button>
+
+  <Flor v-if="showFlor" />
+
+  <button
+    @click="mostrarSol = !mostrarSol"
+    class="mb-4 p-2 bg-blue-500 text-white rounded"
+  >
+    {{ mostrarSol ? "Ocultar Sol" : "Mostrar Sol" }}
+  </button>
+
+  <Sol v-if="mostrarSol" />
+
+  <div class="p-4">
+    <input
+      v-model="nombre"
+      class="border p-2 rounded"
+      placeholder="Escribe tu nombre"
+    />
+    <p class="mt-2">Tu nombre es: {{ nombre }}</p>
   </div>
 
   <div class="py-19">

@@ -1,14 +1,21 @@
-<script>
-import { ref } from 'vue';
+<script setup>
+import { defineProps, defineEmits } from 'vue';
 
-const message = ref('');
+const props = defineProps({
+  modelValue: String,
+});
 
+const emit = defineEmits(['update:modelValue']);
+
+// Cuando el input cambie, se dispara el evento:
+const updateMessage = (e) => {
+  emit('update:modelValue', e.target.value);
+};
 </script>
 
-
 <template>
-    <div>
-        <input v-model="message" placeholder="Escribe algo aquí">
-        <p>El mensaje es: {{ message }} </p>
-    </div>
+  <div>
+    <input :value="modelValue" @input="updateMessage" placeholder="Escribe algo aquí" />
+    <p>El mensaje del hijo es: {{ modelValue }}</p>
+  </div>
 </template>
