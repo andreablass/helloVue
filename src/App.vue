@@ -19,7 +19,7 @@ import { useColor } from "@/composables/useColor";
 import { useNombre } from "@/composables/useNombre";
 import Modal from "@/components/Modal.vue";
 import Form from "@/components/Form.vue";
-import Flor from "@/components/Flor.vue";
+import Flor from "@/components/Flor.vue";  
 import Sol from "@/components/Sol.vue";
 
 const mostrarModal = ref(false);
