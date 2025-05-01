@@ -33,7 +33,6 @@ const mostrarSol = ref(true);
 
 usePrueba();
 
-// ✅ variables
 const mensaje = ref("Hola mundo");
 const logs = ref([]); //
 
@@ -41,7 +40,6 @@ const name = ref("Andrea");
 const description = ref("Web developer and community lead.");
 const showHeader = ref(true);
 
-// Estado reactivo
 const count = ref(0);
 const titulo = ref(null);
 
@@ -129,10 +127,6 @@ const cambiarColor = () => {
       placeholder="Escribe tu nombre"
     />
     <p class="mt-2">Tu nombre es: {{ nombre }}</p>
-  </div>
-
-  <div class="py-19">
-    <button class="p-2 bg-pink-500 text-white rounded">Hello World</button>
   </div>
 
   <Footer>
