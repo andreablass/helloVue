@@ -21,6 +21,7 @@ import Modal from "@/components/Modal.vue";
 import Form from "@/components/Form.vue";
 import Flor from "@/components/Flor.vue";  
 import Sol from "@/components/Sol.vue";
+import { useName } from "@/composables/useName.js";
 
 const mostrarModal = ref(false);
 const message = ref("");
@@ -28,6 +29,7 @@ const { pedido, actualizarPedido } = usePedido();
 const { color } = useColor();
 const { title } = useTitle("Home");
 const { nombre } = useNombre();
+const { nam } = useName();
 const showFlor = ref(true);
 const mostrarSol = ref(true);
 
