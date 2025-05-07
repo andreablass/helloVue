@@ -29,7 +29,6 @@ const { pedido, actualizarPedido } = usePedido();
 const { color } = useColor();
 const { title } = useTitle("Home");
 const { nombre } = useNombre();
-const { nam } = useName();
 const showFlor = ref(true);
 const mostrarSol = ref(true);
 
@@ -122,14 +121,15 @@ const cambiarColor = () => {
 
   <Sol v-if="mostrarSol" />
 
-  <div class="p-4">
+  <div class="p-8">
     <input
       v-model="nombre"
       class="border p-2 rounded"
       placeholder="Escribe tu nombre"
     />
-    <p class="mt-2">Tu nombre es: {{ nombre }}</p>
+    <p class="mt-2 p-10">Tu nombre es: {{ nombre }}</p>
   </div>
+
 
   <Footer>
     <p>Este es el footer</p>
