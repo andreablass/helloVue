@@ -19,7 +19,7 @@ import { useColor } from "@/composables/useColor";
 import { useNombre } from "@/composables/useNombre";
 import Modal from "@/components/Modal.vue";
 import Form from "@/components/Form.vue";
-import Flor from "@/components/Flor.vue";  
+import Flor from "@/components/Flor.vue";
 import Sol from "@/components/Sol.vue";
 import { useName } from "@/composables/useName.js";
 
@@ -103,6 +103,15 @@ const cambiarColor = () => {
     <p>Mensaje recibido en componente padre: {{ message }}</p>
   </div>
 
+  <div class="p-10">
+    <input
+      v-model="nombre"
+      class="border p-2 rounded"
+      placeholder="Escribe tu nombre"
+    />
+    <p class="mt-2 p-10">Tu nombre es: {{ nombre }}</p>
+  </div>
+
   <button
     @click="showFlor = !showFlor"
     class="p-2 bg-blue-500 text-white rounded"
@@ -120,16 +129,6 @@ const cambiarColor = () => {
   </button>
 
   <Sol v-if="mostrarSol" />
-
-  <div class="p-8">
-    <input
-      v-model="nombre"
-      class="border p-2 rounded"
-      placeholder="Escribe tu nombre"
-    />
-    <p class="mt-2 p-10">Tu nombre es: {{ nombre }}</p>
-  </div>
-
 
   <Footer>
     <p>Este es el footer</p>
