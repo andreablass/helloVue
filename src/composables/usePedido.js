@@ -9,7 +9,7 @@ export function usePedido() {
   });
 
   onUpdated(() => {
-    console.log('El componente fue actualizado');
+    console.log('El pedido fue actualizado');
   });
 
   const actualizarPedido = () => {
