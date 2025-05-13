@@ -2,7 +2,6 @@
 import Header from "@/components/navigation/Header.vue";
 import Footer from "@/components/navigation/Footer.vue";
 import About from "@/components/views/About.vue";
-import Container from "@/components/container/Index.vue";
 import { useCounter } from "@/composables/useCounter";
 import {
   ref,
@@ -22,7 +21,10 @@ import Form from "@/components/Form.vue";
 import Flor from "@/components/Flor.vue";
 import Sol from "@/components/Sol.vue";
 import { useName } from "@/composables/useName.js";
+import Container from "@/components/container/Index.vue";
+import CheckboxPersonalizado from './components/CheckboxPersonalizado.vue'
 
+const aceptaTerminos = ref(false)
 const mostrarModal = ref(false);
 const message = ref("");
 const { pedido, actualizarPedido } = usePedido();
@@ -31,6 +33,8 @@ const { title } = useTitle("Home");
 const { nombre } = useNombre();
 const showFlor = ref(true);
 const mostrarSol = ref(true);
+const named = ref("Andy");
+const tittle = ref("Andrea Blass Website");
 
 usePrueba();
 
@@ -56,6 +60,34 @@ const cambiarColor = () => {
 
 <template>
   <Header v-if="showHeader" :title="name" />
+
+  <Container>
+    <div class="grid gap-4 bg-gray-100 rounded px-4 py-2 mb-4">
+      <div>
+        <input
+          class="border rounded-md px-1.5 py-1 border-gray-400"
+          type="text"
+          v-model="named"
+        />
+      </div>
+      <div>Nombre: <span v-text="named" /></div>
+    </div>
+
+    <div class="grid gap-4 bg-gray-100 rounded px-4 py-2">
+      <div>
+        <input
+          v-model="tittle"
+          class="border rounded-md px-1.5 py-1 border-gray-400"
+        />
+      </div>
+      <div>Titulo: <span v-text="tittle" /></div>
+    </div>
+  </Container>
+
+  <div class="p-4 space-y-4">
+    <CheckboxPersonalizado v-model="aceptaTerminos" />
+    <p>¿Aceptó? {{ aceptaTerminos ? "Sí" : "No" }}</p>
+  </div>
 
   <main class="min-h-56">
     <About :name="name" :description="description" @updateName="updateName" />
