@@ -23,6 +23,16 @@ import Sol from "@/components/Sol.vue";
 import { useName } from "@/composables/useName.js";
 import Container from "@/components/container/Index.vue";
 import CheckboxPersonalizado from './components/CheckboxPersonalizado.vue'
+import Modal2 from './components/Modal2.vue'
+import Modal3 from './components/Modal3.vue'
+import Modal4 from './components/Modal4.vue'
+
+const mostrarModal2 = ref(false);
+const cerrarModal = () => {
+  mostrarModal2.value = false;
+};
+const mostrarModal3 = ref(false);
+const mostrarModal4 = ref(false);
 
 const aceptaTerminos = ref(false)
 const mostrarModal = ref(false);
@@ -60,34 +70,21 @@ const cambiarColor = () => {
 
 <template>
   <Header v-if="showHeader" :title="name" />
+<!-- Modal2 forma 1 -->
+  <button v-on:click="mostrarModal2 = true" class="p-2 bg-blue-500 text-white rounded">
+    Abrir Modal
+  </button>
+  <Modal v-bind:visible="mostrarModal2" v-on:cerrar="cerrarModal" />
 
-  <Container>
-    <div class="grid gap-4 bg-gray-100 rounded px-4 py-2 mb-4">
-      <div>
-        <input
-          class="border rounded-md px-1.5 py-1 border-gray-400"
-          type="text"
-          v-model="named"
-        />
-      </div>
-      <div>Nombre: <span v-text="named" /></div>
-    </div>
+<!-- Modal3 forma 2 -->
+   <button @click="mostrarModal3 = true" class="p-2 bg-pink-500 text-white rounded">Abrir Modal</button>
+  <!-- Aquí ya usas v-model directamente -->
+  <Modal v-model="mostrarModal3" />
 
-    <div class="grid gap-4 bg-gray-100 rounded px-4 py-2">
-      <div>
-        <input
-          v-model="tittle"
-          class="border rounded-md px-1.5 py-1 border-gray-400"
-        />
-      </div>
-      <div>Titulo: <span v-text="tittle" /></div>
-    </div>
-  </Container>
+<!-- Modal4 forma 3 -->
+  <button @click="mostrarModal4 = true" class="p-2 bg-green-500 text-white rounded">Abrir Modal</button>
+  <Modal v-model="mostrarModal4" />
 
-  <div class="p-4 space-y-4">
-    <CheckboxPersonalizado v-model="aceptaTerminos" />
-    <p>¿Aceptó? {{ aceptaTerminos ? "Sí" : "No" }}</p>
-  </div>
 
   <main class="min-h-56">
     <About :name="name" :description="description" @updateName="updateName" />

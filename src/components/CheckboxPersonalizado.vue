@@ -20,7 +20,8 @@ const toggle = () => {
   </div>
 </template>
 
-<!-- <script setup>
+<!--  Model value
+<script setup>
 const checked = defineModel() // usa 'modelValue' por defecto
 </script>
 
