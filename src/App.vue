@@ -22,10 +22,10 @@ import Flor from "@/components/Flor.vue";
 import Sol from "@/components/Sol.vue";
 import { useName } from "@/composables/useName.js";
 import Container from "@/components/container/Index.vue";
-import CheckboxPersonalizado from './components/CheckboxPersonalizado.vue'
-import Modal2 from './components/Modal2.vue'
-import Modal3 from './components/Modal3.vue'
-import Modal4 from './components/Modal4.vue'
+import CheckboxPersonalizado from "./components/CheckboxPersonalizado.vue";
+import Modal2 from "./components/Modal2.vue";
+import Modal3 from "./components/Modal3.vue";
+import Modal4 from "./components/Modal4.vue";
 
 const mostrarModal2 = ref(false);
 const cerrarModal = () => {
@@ -34,7 +34,7 @@ const cerrarModal = () => {
 const mostrarModal3 = ref(false);
 const mostrarModal4 = ref(false);
 
-const aceptaTerminos = ref(false)
+const aceptaTerminos = ref(false);
 const mostrarModal = ref(false);
 const message = ref("");
 const { pedido, actualizarPedido } = usePedido();
@@ -70,21 +70,35 @@ const cambiarColor = () => {
 
 <template>
   <Header v-if="showHeader" :title="name" />
-<!-- Modal2 forma 1 -->
-  <button v-on:click="mostrarModal2 = true" class="p-2 bg-blue-500 text-white rounded">
+  
+  <!-- Modal2 forma 1 -->
+  <button
+    v-on:click="mostrarModal2 = true"
+    class="p-2 bg-blue-500 text-white rounded"
+  >
     Abrir Modal
   </button>
-  <Modal v-bind:visible="mostrarModal2" v-on:cerrar="cerrarModal" />
 
-<!-- Modal3 forma 2 -->
-   <button @click="mostrarModal3 = true" class="p-2 bg-pink-500 text-white rounded">Abrir Modal</button>
+  <Modal2 v-bind:visible="mostrarModal2" v-on:cerrar="cerrarModal" />
+
+  <!-- Modal3 forma 2 -->
+  <button
+    @click="mostrarModal3 = true"
+    class="p-2 bg-pink-500 text-white rounded"
+  >
+    Abrir Modal
+  </button>
   <!-- Aquí ya usas v-model directamente -->
   <Modal v-model="mostrarModal3" />
 
-<!-- Modal4 forma 3 -->
-  <button @click="mostrarModal4 = true" class="p-2 bg-green-500 text-white rounded">Abrir Modal</button>
+  <!-- Modal4 forma 3 -->
+  <button
+    @click="mostrarModal4 = true"
+    class="p-2 bg-green-500 text-white rounded"
+  >
+    Abrir Modal
+  </button>
   <Modal v-model="mostrarModal4" />
-
 
   <main class="min-h-56">
     <About :name="name" :description="description" @updateName="updateName" />

@@ -1,6 +1,6 @@
 <script setup>
-const props = defineProps(['visible']);
-const emit = defineEmits(['cerrar']);
+const props = defineProps(['visible']); //visible es igual a  v-bind para pasar props 
+const emit = defineEmits(['cerrar']); // cerras es igual a v-on para escuchar eventos
 </script>
 
 <template>
@@ -11,4 +11,11 @@ const emit = defineEmits(['cerrar']);
     </div>
   </div>
 </template>
+<!-- 
+El padre envía el estado con visible
 
+El hijo emite el evento cerrar
+
+El padre recibe el evento y cambia el valor a false
+
+-->
