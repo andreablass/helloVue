@@ -10,3 +10,4 @@ const visible = defineModel();     // ← AUTOMÁTICO
     </div>
   </div>
 </template>
+<!-- Este modal es mas rapido y directo a diferencia de los otros  pasos para hacer un v model-->

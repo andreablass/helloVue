@@ -26,6 +26,7 @@ import CheckboxPersonalizado from "./components/CheckboxPersonalizado.vue";
 import Modal2 from "./components/Modal2.vue";
 import Modal3 from "./components/Modal3.vue";
 import Modal4 from "./components/Modal4.vue";
+import Modal5 from "./components/Modal5.vue";
 
 const mostrarModal2 = ref(false);
 const cerrarModal = () => {
@@ -33,6 +34,7 @@ const cerrarModal = () => {
 };
 const mostrarModal3 = ref(false);
 const mostrarModal4 = ref(false);
+const mostrarModal5 = ref(false);
 
 const aceptaTerminos = ref(false);
 const mostrarModal = ref(false);
@@ -70,7 +72,7 @@ const cambiarColor = () => {
 
 <template>
   <Header v-if="showHeader" :title="name" />
-  
+
   <!-- Modal2 forma 1 -->
   <button
     v-on:click="mostrarModal2 = true"
@@ -88,7 +90,7 @@ const cambiarColor = () => {
   >
     Abrir Modal
   </button>
-  <!-- Aquí ya usas v-model directamente -->
+  <!-- Aquí ya se usa v-model directamente -->
   <Modal v-model="mostrarModal3" />
 
   <!-- Modal4 forma 3 -->
@@ -99,6 +101,14 @@ const cambiarColor = () => {
     Abrir Modal
   </button>
   <Modal v-model="mostrarModal4" />
+
+  <!--Modal5 forma 4-->
+  <button @click="mostrarModal5 = true">Abrir Modal</button>
+
+  <Modal5
+    :modelValue="mostrarModal5"
+    @update:modelValue="mostrarModal5 = $event"
+  />
 
   <main class="min-h-56">
     <About :name="name" :description="description" @updateName="updateName" />

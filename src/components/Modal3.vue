@@ -20,4 +20,4 @@ Vue interpreta automáticamente v-model="mostrarModal3" como:
 El hijo sólo tiene que emitir update:modelValue y Vue se encarga del resto.
 
 No necesitas cerrarModal(), ni v-bind, ni v-on.
-->
+-->
