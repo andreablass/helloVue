@@ -91,7 +91,10 @@ const cambiarColor = () => {
     Abrir Modal
   </button>
   <!-- Aquí ya se usa v-model directamente -->
-  <Modal v-model="mostrarModal3" />
+<Modal3
+  :modelValue="mostrarModal3"
+  @update:modelValue="mostrarModal3 = $event"
+/>
 
   <!-- Modal4 forma 3 -->
   <button
@@ -100,15 +103,12 @@ const cambiarColor = () => {
   >
     Abrir Modal
   </button>
-  <Modal v-model="mostrarModal4" />
+  <Modal4 v-model:visible="mostrarModal4" />
 
   <!--Modal5 forma 4-->
   <button @click="mostrarModal5 = true">Abrir Modal</button>
 
-  <Modal5
-    :modelValue="mostrarModal5"
-    @update:modelValue="mostrarModal5 = $event"
-  />
+<Modal5 v-model="mostrarModal5" />
 
   <main class="min-h-56">
     <About :name="name" :description="description" @updateName="updateName" />

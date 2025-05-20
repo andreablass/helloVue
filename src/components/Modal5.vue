@@ -1,22 +1,20 @@
 <script setup>
-const props = defineProps(['modelValue'])
-const emit = defineEmits(['update:modelValue'])
+const visible = defineModel()
 </script>
 
 <template>
-  <div v-if="modelValue" class="bg-white p-4 rounded shadow">
-    <p>Este es el modal</p>
-    <button @click="emit('update:modelValue', false)">
-      Cerrar
-    </button>
+  <div v-if="visible" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+    <div class="bg-white p-4 rounded">
+      <p>Modal 4: defineModel()</p>
+      <button @click="visible = false">Cerrar</button>
+    </div>
   </div>
 </template>
 
 <!-- 
-v-model="x"  
+defineModel()
 
-es lo mismo que recibir 
+ El más limpio
+Solo funciona con <script setup>, y si quieres aún menos código.
 
-:modelValue="x"
-@update:modelValue="x = $event"
 -->
