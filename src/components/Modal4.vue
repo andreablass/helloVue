@@ -17,4 +17,5 @@ v-model:nombre
 
 Para múltiples bindings
 Te permite tener varios v-model en un mismo componente.
+Solo cambias los nombres
 -->
