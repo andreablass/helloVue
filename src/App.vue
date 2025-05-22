@@ -27,6 +27,7 @@ import Modal2 from "./components/Modal2.vue";
 import Modal3 from "./components/Modal3.vue";
 import Modal4 from "./components/Modal4.vue";
 import Modal5 from "./components/Modal5.vue";
+import Modal7 from "./components/Modal7.vue";
 
 const mostrarModal2 = ref(false);
 const cerrarModal = () => {
@@ -35,6 +36,7 @@ const cerrarModal = () => {
 const mostrarModal3 = ref(false);
 const mostrarModal4 = ref(false);
 const mostrarModal5 = ref(false);
+const open = ref(false)
 
 const aceptaTerminos = ref(false);
 const mostrarModal = ref(false);
@@ -72,6 +74,30 @@ const cambiarColor = () => {
 
 <template>
   <Header v-if="showHeader" :title="name" />
+  <Container>
+    <div class="bg-gray-100 rounded px-4 py-2 my-4">
+      <button class="bg-gray-200 text-gray-800 px-2 py-1 rounded border-gray-300" @click="open = true">
+        Open Modal
+      </button>
+      
+      <Modal7 v-model="open">
+        <template #title>
+          Este es el titulo
+        </template>
+
+        <div class="grid gap-4">
+          <p>Vue offers two built-in components that can help work with transitions and animations in response to changing state:</p>
+          <p>for applying animations when an element or component is entering and leaving the DOM. This is covered </p>
+          <p>on this page.</p>
+        </div>
+        <template #buttons>
+          <Button @click="open = false">
+            Close
+          </Button>
+        </template>
+      </Modal7>
+    </div>
+  </Container>
 
   <!-- Modal2 forma 1 -->
   <button
