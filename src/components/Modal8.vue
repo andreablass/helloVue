@@ -3,10 +3,8 @@ const visible = defineModel()
 </script>
 
 <template>
-  <Transition name="fade"
-
-  >
-    <div v-if="visible" class="absolute inset-0">
+  <Transition name="fade">
+    <div v-if="visible">
       <!-- Fondo -->
       <div
         class="bg-gray-950/50 fixed inset-0 backdrop-blur-xs"
@@ -36,3 +34,20 @@ const visible = defineModel()
     </div>
   </Transition>
 </template>
+
+<style scoped>
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.2s ease-in-out;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
+.fade-enter-to,
+.fade-leave-from {
+  opacity: 1;
+}
+</style>

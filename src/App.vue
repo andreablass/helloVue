@@ -28,6 +28,7 @@ import Modal3 from "./components/Modal3.vue";
 import Modal4 from "./components/Modal4.vue";
 import Modal5 from "./components/Modal5.vue";
 import Modal7 from "./components/Modal7.vue";
+import Modal8 from "./components/Modal8.vue";
 
 const mostrarModal2 = ref(false);
 const cerrarModal = () => {
@@ -36,7 +37,10 @@ const cerrarModal = () => {
 const mostrarModal3 = ref(false);
 const mostrarModal4 = ref(false);
 const mostrarModal5 = ref(false);
-const open = ref(false)
+
+const open = ref(false);          // Puedes eliminar si no usas
+const openModal7 = ref(false);
+const openModal8 = ref(false);
 
 const aceptaTerminos = ref(false);
 const mostrarModal = ref(false);
@@ -76,11 +80,21 @@ const cambiarColor = () => {
   <Header v-if="showHeader" :title="name" />
   <Container>
     <div class="bg-gray-100 rounded px-4 py-2 my-4">
-      <button class="bg-gray-200 text-gray-800 px-2 py-1 rounded border-gray-300" @click="open = true">
-        Open Modal
+      <!-- Botones separados para abrir cada modal -->
+      <button
+        class="bg-gray-200 text-gray-800 px-2 py-1 rounded border-gray-300 mr-2"
+        @click="openModal7 = true"
+      >
+        Open Modal 7
       </button>
-      
-      <Modal7 v-model="open">
+      <button
+        class="bg-gray-200 text-gray-800 px-2 py-1 rounded border-gray-300"
+        @click="openModal8 = true"
+      >
+        Open Modal 8
+      </button>
+
+      <Modal7 v-model="openModal7">
         <template #title>
           Este es el titulo
         </template>
@@ -91,11 +105,29 @@ const cambiarColor = () => {
           <p>on this page.</p>
         </div>
         <template #buttons>
-          <Button @click="open = false">
+          <Button @click="openModal7 = false">
             Close
           </Button>
         </template>
       </Modal7>
+
+      <Modal8 v-model="openModal8">
+        <template #title>
+          Modal 8 tutulo
+        </template>
+
+        <div class="grid gap-4">
+          <p>Vue offers two built-in components that can help work with transitions and animations in response to changing state:</p>
+          <p>for applying animations when an element or component is entering and leaving the DOM. This is covered </p>
+          <p>on this page.</p>
+        </div>
+
+        <template #buttons>
+          <Button @click="openModal8 = false">
+            Close
+          </Button>
+        </template>
+      </Modal8>
     </div>
   </Container>
 
@@ -104,7 +136,7 @@ const cambiarColor = () => {
     v-on:click="mostrarModal2 = true"
     class="p-2 bg-blue-500 text-white rounded"
   >
-    Abrir Modal
+    Abrir Modal 2
   </button>
 
   <Modal2 v-bind:visible="mostrarModal2" v-on:cerrar="cerrarModal" />
@@ -114,27 +146,27 @@ const cambiarColor = () => {
     @click="mostrarModal3 = true"
     class="p-2 bg-pink-500 text-white rounded"
   >
-    Abrir Modal
+    Abrir Modal 3
   </button>
   <!-- Aquí ya se usa v-model directamente -->
-<Modal3
-  :modelValue="mostrarModal3"
-  @update:modelValue="mostrarModal3 = $event"
-/>
+  <Modal3
+    :modelValue="mostrarModal3"
+    @update:modelValue="mostrarModal3 = $event"
+  />
 
   <!-- Modal4 forma 3 -->
   <button
     @click="mostrarModal4 = true"
     class="p-2 bg-green-500 text-white rounded"
   >
-    Abrir Modal
+    Abrir Modal 4
   </button>
   <Modal4 v-model:visible="mostrarModal4" />
 
   <!--Modal5 forma 4-->
-  <button @click="mostrarModal5 = true">Abrir Modal</button>
+  <button @click="mostrarModal5 = true">Abrir Modal 5</button>
 
-<Modal5 v-model="mostrarModal5" />
+  <Modal5 v-model="mostrarModal5" />
 
   <main class="min-h-56">
     <About :name="name" :description="description" @updateName="updateName" />
@@ -171,7 +203,7 @@ const cambiarColor = () => {
       @click="mostrarModal = true"
       class="bg-blue-500 text-white px-4 py-2 rounded"
     >
-      Abrir Modal
+      Abrir Modal general
     </button>
     <Modal v-model="mostrarModal" />
   </div>
