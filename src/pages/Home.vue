@@ -1,6 +1,4 @@
 <script setup>
-import Header from "@/components/navigation/Header.vue";
-import Footer from "@/components/navigation/Footer.vue";
 import About from "@/components/views/About.vue";
 import { useCounter } from "@/composables/useCounter";
 import {
@@ -22,13 +20,13 @@ import Flor from "@/components/Flor.vue";
 import Sol from "@/components/Sol.vue";
 import { useName } from "@/composables/useName.js";
 import Container from "@/components/container/Index.vue";
-import CheckboxPersonalizado from "./components/CheckboxPersonalizado.vue";
-import Modal2 from "./components/Modal2.vue";
-import Modal3 from "./components/Modal3.vue";
-import Modal4 from "./components/Modal4.vue";
-import Modal5 from "./components/Modal5.vue";
-import Modal7 from "./components/Modal7.vue";
-import Modal8 from "./components/Modal8.vue";
+import CheckboxPersonalizado from "@/components/CheckboxPersonalizado.vue";
+import Modal2 from "@/components/Modal2.vue";
+import Modal3 from "@/components/Modal3.vue";
+import Modal4 from "@/components/Modal4.vue";
+import Modal5 from "@/components/Modal5.vue";
+import Modal7 from "@/components/Modal7.vue";
+import Modal8 from "@/components/Modal8.vue";
 
 const mostrarModal2 = ref(false);
 const cerrarModal = () => {
@@ -77,8 +75,7 @@ const cambiarColor = () => {
 </script>
 
 <template>
-  <Header v-if="showHeader" :title="name" />
-
+<div>HomePage</div>
   <Container>
     <div class="bg-gray-100 rounded px-4 py-2 my-4">
       <RouterLink :to="{ name: 'my-profile' }"> Mi perfil </RouterLink>
@@ -180,14 +177,12 @@ const cambiarColor = () => {
 
   <Modal5 v-model="mostrarModal5" />
 
-  <main class="min-h-56">
     <About :name="name" :description="description" @updateName="updateName" />
 
     <div>
       <h2 ref="titulo">Has hecho clic {{ count }} veces</h2>
       <button @click="incrementar">Haz clic</button>
     </div>
-  </main>
 
   <div class="p-4">
     <h1 class="text-xl font-bold">Mi Pedido</h1>
@@ -252,14 +247,4 @@ const cambiarColor = () => {
   </button>
 
   <Sol v-if="mostrarSol" />
-
-  <Footer>
-    <p>Este es el footer</p>
-    <button
-      @click="showHeader = !showHeader"
-      class="mt-4 p-2 bg-blue-500 text-white rounded"
-    >
-      {{ showHeader ? "Ocultar Header" : "Mostrar Header" }}
-    </button>
-  </Footer>
 </template>
