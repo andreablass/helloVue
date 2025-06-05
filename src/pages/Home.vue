@@ -1,5 +1,5 @@
 <script setup>
-
+import Hijo from  './Hijo.vue';
 </script>
 
 <template>
