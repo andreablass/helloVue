@@ -1,5 +1,10 @@
 <script setup>
-import Hijo from  './Hijo.vue';
+import { readonly } from 'vue';
+import Hijo from  '@/components/home/Hijo.vue';
+
+const title = ref('Andrea Blass')
+
+provide('title', readonly(title))
 </script>
 
 <template>
