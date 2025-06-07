@@ -1,5 +1,6 @@
-<script>
+<script setup>
 import Nieto from  '@/components/home/Nieto.vue';
+
 </script>
 
 <template>

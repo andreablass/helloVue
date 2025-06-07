@@ -72,6 +72,8 @@ const incrementar = () => {
 const cambiarColor = () => {
   color.value = color.value === "black" ? "red" : "black";
 };
+const props = defineProps(['message'])
+const emit = defineEmits(['enviar'])
 </script>
 
 <template>
