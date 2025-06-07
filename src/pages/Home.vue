@@ -1,7 +1,6 @@
 <script setup>
 import { ref, readonly, provide } from 'vue';
 import Hijo from '@/components/home/Hijo.vue';
-import Container from '@/components/container/Index.vue'; // Asegúrate de tener este import si usas Container
 
 const title = ref('Andrea Blass');
 
