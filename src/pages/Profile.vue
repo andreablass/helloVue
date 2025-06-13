@@ -1,16 +1,25 @@
 <script setup>
-const props = defineProps({})
+import { useUserStore } from "@/stores/user";
+import { ref } from "vue";
+
+const user = useUserStore();
 </script>
 
 <template>
-<h1>Perfil</h1>
-  <div class="bg-white rounded shadow p-4 max-w-md mx-auto mt-6 flex items-center">
-    <div>
-      <h2 class="text-xl font-bold">Andrea Blass</h2>
-      <p class="text-gray-600 text-sm">From morelos🌞</p>
-      <button class="mt-2 px-3 py-1 bg-pink-500 text-white rounded text-sm">
-        Editar perfil
-      </button>
+  <Container>
+    <h1 class="text-2xl font-bold my-4">Perfil de Usuario</h1>
+
+    <div class="p-4 border rounded max-w-md mx-auto mt-4">
+      <label class="block mb-2 text-sm text-gray-600">Nombre</label>
+      <input
+        v-model="user.name"
+        class="border p-2 w-full rounded"
+      />
+
+      <div class="mt-4">
+        <p><strong>Vista previa:</strong> {{ user.name }}</p>
+        <img :src="user.avatar" alt="Avatar" class="w-16 h-16 mt-2 rounded-full" />
+      </div>
     </div>
-  </div>
+  </Container>
 </template>
