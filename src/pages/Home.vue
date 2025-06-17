@@ -24,14 +24,14 @@ provide("title", readonly(title));
       </div>
     </Container>
 
-    <Container>
+  <!-- <Container>
       <button
         @click="modal.open"
         class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded shadow"
       >
         Abrir Modal
       </button>
-    </Container>
+    </Container> 
 
     <Modal>
       <h2 class="text-xl font-bold mb-2">Hola, soy un modal</h2>
@@ -45,4 +45,5 @@ provide("title", readonly(title));
         Cerrar
       </button>
     </Modal>
+    -->
 </template>

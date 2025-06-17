@@ -15,11 +15,11 @@ const props = defineProps({
       <h1>{{ title }}</h1>
       <div class="container mx-auto flex items-center justify-between">
         <div class="flex items-center">
-          <a href="/" class="text-2xl font-bold text-black"> Andrea </a>
-          <div>
-            <img :src="user.avatar" alt="avatar" class="w-8 h-8 rounded-full" />
-            <span class="font-semibold text-sm">Hola, {{ user.name }} 👋</span>
-          </div>
+          <a href="/" class="text-2xl font-bold text-black"> Inicio </a>
+        </div>
+        <div>
+          <img :src="user.avatar" alt="avatar" class="w-8 h-8 rounded-full" />
+          <span class="font-semibold text-sm">Hola, {{ user.name }} 👋</span>
         </div>
         <div class="flex items-center space-x-4">
           <div class="relative">
